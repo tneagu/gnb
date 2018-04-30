@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GNB</string>
+    <string name="header">Transactions</string>
+    <string name="product">Product name: </string>
+    <string name="amount">Amount: </string>
+    <string name="currency">Currency: </string>
+
+</resources>
