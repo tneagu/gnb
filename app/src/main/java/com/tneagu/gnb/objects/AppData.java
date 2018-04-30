@@ -11,7 +11,7 @@ public class AppData {
     private static AppData instance = null;
     private ArrayList<Transaction> transactions;
     private ArrayList<Rate> rates;
-    private float foundRate;
+    private double foundRate;
     private HashSet<String> alreadyVisited;
 
     private AppData() {
@@ -46,7 +46,7 @@ public class AppData {
     /*
     Get transaction rate between two currencies
      */
-    public float getTransactionRate(String from, String to){
+    public double getTransactionRate(String from, String to){
         if(alreadyVisited == null){
             alreadyVisited = new HashSet<>();
         }else{
@@ -60,8 +60,8 @@ public class AppData {
     /*
     PRIVATE IMPLEMENTATION
      */
-    private float getRate(String from, String to, float rate){
-        float f = getRateBetween(from, to);
+    private double getRate(String from, String to, double rate){
+        double f = getRateBetween(from, to);
         if(f != 0){//we have a route
             return rate * f;
         }else{
@@ -81,7 +81,7 @@ public class AppData {
     }
 
 
-    private float getRateBetween(String from, String to){
+    private double getRateBetween(String from, String to){
         for(Rate r: rates){
             if(r.getFrom().equals(from) && r.getTo().equals(to)){
                 return r.getRate();

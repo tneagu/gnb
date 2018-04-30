@@ -22,6 +22,7 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -76,18 +77,20 @@ public class ProductDetails extends Activity implements IRatesCallback {
     }
 
     @UiThread
-    public void updateSumOnUi(float calculatedSum){
-        sum.setText("TOTAL SUM: " + String.valueOf(calculatedSum) + " EUR");
+    public void updateSumOnUi(double calculatedSum){
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        sum.setText("TOTAL SUM: " + df.format(calculatedSum) + " EUR");
     }
 
     @Background
     public void calculateSum() {
-        float calculatedSum = 1;
+        double calculatedSum = 1;
         for(Transaction t: transactions){
             if(t.getCurrency().equals("EUR")){
                 calculatedSum = calculatedSum + t.getAmount();
             }else{
-                float transactionRate = AppData.getInstance().getTransactionRate(t.getCurrency(), "EUR");
+                double transactionRate = AppData.getInstance().getTransactionRate(t.getCurrency(), "EUR");
                 calculatedSum = calculatedSum + t.getAmount() * transactionRate;
             }
         }

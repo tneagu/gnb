@@ -11,7 +11,7 @@ public class Transaction {
     @SerializedName("sku")
     private String sku;
     @SerializedName("amount")
-    private float amount;
+    private double amount;
     @SerializedName("currency")
     private String currency;
 
@@ -19,7 +19,7 @@ public class Transaction {
         return sku;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 

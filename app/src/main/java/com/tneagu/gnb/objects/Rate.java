@@ -13,7 +13,7 @@ public class Rate {
     @SerializedName("to")
     private String to;
     @SerializedName("rate")
-    private float rate;
+    private double rate;
 
     public String getFrom() {
         return from;
@@ -31,11 +31,11 @@ public class Rate {
         this.to = to;
     }
 
-    public float getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setRate(float rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 }

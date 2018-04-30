@@ -36,10 +36,9 @@ public class TransactionPresenter implements ITransactionPresenter {
         apiService.getTransactions().enqueue(new Callback<ArrayList<Transaction>>() {
             @Override
             public void onResponse(Call<ArrayList<Transaction>> call, Response<ArrayList<Transaction>> response) {
-                //save the data to AppData singleton
                 ArrayList<Transaction> transactions = response.body();
+                //save the data to AppData singleton
                 AppData.getInstance().setTransactions(transactions);
-
                 //prepare the answer for the UI
                 HashSet<String> products = new HashSet<>();
                 for(Transaction t : transactions){
